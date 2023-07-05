@@ -62,11 +62,36 @@ void lvgl_setup(){
     static lv_indev_drv_t indev_drv;
     lv_indev_drv_init( &indev_drv );
     indev_drv.type = LV_INDEV_TYPE_POINTER;
-//    indev_drv.read_cb = my_touchpad_read;
+    indev_drv.read_cb = my_touchpad_read;
     lv_indev_drv_register( &indev_drv );
   
     /* Create simple label */
     lv_obj_t *label = lv_label_create( lv_scr_act() );
     lv_label_set_text( label, "Hello Ardino and LVGL!");
     lv_obj_align( label, LV_ALIGN_CENTER, 0, 0 );
+}
+void my_touchpad_read( lv_indev_drv_t * indev_drv, lv_indev_data_t * data )
+{
+    uint16_t touchX, touchY;
+
+    bool touched = Touch_getXY( &touchX, &touchY);
+
+    if( !touched )
+    {
+        data->state = LV_INDEV_STATE_REL;
+    }
+    else
+    {
+        data->state = LV_INDEV_STATE_PR;
+
+        /*Set the coordinates*/
+        data->point.x = touchX;
+        data->point.y = touchY;
+
+        Serial.print( "Data x " );
+        Serial.println( touchX );
+
+        Serial.print( "Data y " );
+        Serial.println( touchY );
+    }
 }
