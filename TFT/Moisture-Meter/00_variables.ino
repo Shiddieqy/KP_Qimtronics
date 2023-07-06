@@ -1,3 +1,6 @@
+#define SCALE 200/89529
+#define VOLUME 1
+
 long int dis;
 long int tim = millis();
 float moisture = 10.23;
@@ -7,6 +10,11 @@ char Moisture[20];
 char Temperature[20];
 char Density[20];
 int taree = 0;
+float ScaleConst = 1;
+float gradient = -0.0254;
+float offset = 83.043;
+
+HX711 scale;
 lv_obj_t * ui_Screen1;
 lv_obj_t * ui_Panel6;
 lv_obj_t * ui_Label15;

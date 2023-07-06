@@ -135,16 +135,6 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_style_text_align(ui_Moisture, LV_TEXT_ALIGN_CENTER, LV_PART_TEXTAREA_PLACEHOLDER | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_Moisture, &lv_font_montserrat_16, LV_PART_TEXTAREA_PLACEHOLDER | LV_STATE_DEFAULT);
 
-    ui_MoistArc = lv_arc_create(ui_Panel2);
-    lv_obj_set_width(ui_MoistArc, 104);
-    lv_obj_set_height(ui_MoistArc, 150);
-    lv_obj_set_x(ui_MoistArc, 0);
-    lv_obj_set_y(ui_MoistArc, 25);
-    lv_obj_set_align(ui_MoistArc, LV_ALIGN_CENTER);
-    lv_arc_set_value(ui_MoistArc, 90);
-
-    lv_obj_set_style_opa(ui_MoistArc, 0, LV_PART_KNOB | LV_STATE_DEFAULT);
-
     ui_Label2 = lv_label_create(ui_Screen1);
     lv_obj_set_width(ui_Label2, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_Label2, LV_SIZE_CONTENT);    /// 1
@@ -154,6 +144,18 @@ void ui_Screen1_screen_init(void)
     lv_label_set_text(ui_Label2, "g/cm");
     lv_obj_set_style_text_color(ui_Label2, lv_color_hex(0x0073FF), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_Label2, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+
+    ui_MoistArc = lv_arc_create(ui_Screen1);
+    lv_obj_set_width(ui_MoistArc, 112);
+    lv_obj_set_height(ui_MoistArc, 150);
+    lv_obj_set_x(ui_MoistArc, 4);
+    lv_obj_set_y(ui_MoistArc, -50);
+    lv_obj_set_align(ui_MoistArc, LV_ALIGN_CENTER);
+    lv_arc_set_value(ui_MoistArc, 90);
+
+    lv_obj_set_style_border_side(ui_MoistArc, LV_BORDER_SIDE_NONE, LV_PART_INDICATOR | LV_STATE_DEFAULT);
+
+    lv_obj_set_style_opa(ui_MoistArc, 0, LV_PART_KNOB | LV_STATE_DEFAULT);
 
     ui_Label1 = lv_label_create(ui_Screen1);
     lv_obj_set_width(ui_Label1, LV_SIZE_CONTENT);   /// 1
@@ -248,7 +250,7 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_width(ui_Label6, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_Label6, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_x(ui_Label6, 8);
-    lv_obj_set_y(ui_Label6, -129);
+    lv_obj_set_y(ui_Label6, -137);
     lv_obj_set_align(ui_Label6, LV_ALIGN_CENTER);
     lv_label_set_text(ui_Label6, "Coffe Moisture Meter");
     lv_obj_set_style_text_color(ui_Label6, lv_color_hex(0x94AEB4), LV_PART_MAIN | LV_STATE_DEFAULT);

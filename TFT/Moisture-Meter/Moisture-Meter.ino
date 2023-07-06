@@ -19,6 +19,23 @@
 // adjust pressure sensitivity - note works 'backwards'
 #define MINPRESSURE 200
 #define MAXPRESSURE 1000
+#include "max6675.h"
+#include "soc/rtc.h"
+#include "HX711.h"
+
+// Pin
+// Thermocouple
+#define thermoDO 19
+#define thermoCS 23
+#define thermoCLK 5
+// Load Cell
+#define LOADCELL_DOUT_PIN 35
+#define LOADCELL_SCK_PIN 13
+// Moisture
+#define Moisture_Pin 36
+MAX6675 thermocouple(thermoCLK, thermoCS, thermoDO);
+const int numMeasurements = 10;  // Number of measurements for averaging
+const int samplingInterval = 10; 
 const int XP = 27, XM = 15, YP = 4, YM = 14; // default ESP32 Uno touchscreen pins
 TouchScreen ts = TouchScreen(XP, YP, XM, YM, 300);
 const int coords[] = {3800, 0, 0, 3800}; 
