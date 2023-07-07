@@ -9,10 +9,13 @@ float density = 130.23;
 char Moisture[20];
 char Temperature[20];
 char Density[20];
-int taree = 0;
+int taree = 1;
 float ScaleConst = 1;
 float gradient = -0.0254;
 float offset = 83.043;
+float tempSum = 0;
+float weightSum = 0;
+float moistSum = 0;
 
 HX711 scale;
 lv_obj_t * ui_Screen1;

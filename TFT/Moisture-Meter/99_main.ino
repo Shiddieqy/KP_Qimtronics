@@ -4,6 +4,7 @@ void setup()
     lvgl_setup();
     view_setup();
     setup_loadcell();
+    
     Serial.println( "Setup done" );
 }
 void loop()
@@ -13,6 +14,7 @@ void loop()
     delay(5);
 
     update_data();
+    
 
 
 }
