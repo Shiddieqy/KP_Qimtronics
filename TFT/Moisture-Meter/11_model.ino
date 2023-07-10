@@ -3,7 +3,8 @@ void sensor_sampling(){
 
   scale.power_up();
    for (int i = 0; i < numMeasurements; i++) {
-    tempSum += thermocouple.readCelsius();
+      sensors.requestTemperatures(); 
+    tempSum += sensors.getTempCByIndex(0);
     weightSum += scale.get_units(1);
     moistSum += analogRead(Moisture_Pin);
     delay(samplingInterval);

@@ -16,7 +16,9 @@ float offset = 83.043;
 float tempSum = 0;
 float weightSum = 0;
 float moistSum = 0;
-
+const int oneWireBus = 18; 
+OneWire oneWire(oneWireBus);
+DallasTemperature sensors(&oneWire);
 HX711 scale;
 lv_obj_t * ui_Screen1;
 lv_obj_t * ui_Panel6;

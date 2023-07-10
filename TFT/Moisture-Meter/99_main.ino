@@ -4,6 +4,7 @@ void setup()
     lvgl_setup();
     view_setup();
     setup_loadcell();
+      sensors.begin();
     
     Serial.println( "Setup done" );
 }

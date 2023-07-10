@@ -15,7 +15,8 @@
 #include <lvgl.h>
 #include <TFT_eSPI.h>
 #include <TouchScreen.h>
-
+#include <OneWire.h>
+#include <DallasTemperature.h>
 // adjust pressure sensitivity - note works 'backwards'
 #define MINPRESSURE 200
 #define MAXPRESSURE 1000
