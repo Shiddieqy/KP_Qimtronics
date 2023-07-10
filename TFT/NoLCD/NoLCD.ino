@@ -27,6 +27,8 @@ float offset = 83.043;
 HX711 scale;
 MAX6675 thermocouple(thermoCLK, thermoCS, thermoDO);
 
+bool collectData = false;  // Flag to indicate data collection
+
 void setup() {
   Serial.begin(115200);
   rtc_clk_cpu_freq_set(RTC_CPU_FREQ_80M);
@@ -35,37 +37,45 @@ void setup() {
   delay(1000);
   scale.tare();
   Serial.println();
-  Serial.println("Tare done, measurement start!");
+  Serial.println("Tare done, ready to collect data!");
+  Serial.println("Send 'P' to start data collection.");
   Serial.println("Temperature\t| Weight\t| Moisture");
   delay(1000);
 }
 
 void loop() {
-  // Variables for averaging
-  float tempSum = 0;
-  float weightSum = 0;
-  float moistSum = 0;
-
-  // Perform measurements
-  for (int i = 0; i < numMeasurements; i++) {
-    tempSum += thermocouple.readCelsius();
-    weightSum += scale.get_units(1);
-    moistSum += analogRead(Moisture_Pin);
-    delay(samplingInterval);
+  if (Serial.available()) {
+    char receivedChar = Serial.read();
+    if (receivedChar == 'P') {
+      collectData = true;
+    }
   }
 
-  // Calculate averages
-  float tempAvg = tempSum / numMeasurements;
-  float weightAvg = weightSum / numMeasurements;
-  float moistAvg = (moistSum / numMeasurements) * gradient + offset;
+  if (collectData) {
+    // Variables for averaging
+    float tempSum = 0;
+    float weightSum = 0;
+    float moistSum = 0;
 
-  // Print the results
-  Serial.print(tempAvg, 2);
-  Serial.print("\t\t| ");
-  Serial.print(weightAvg, 2);
-  Serial.print("\t| ");
-  Serial.print(moistAvg, 2);
-  Serial.println();
+    // Perform measurements
+    for (int i = 0; i < numMeasurements; i++) {
+      tempSum += thermocouple.readCelsius();
+      weightSum += scale.get_units(1);
+      moistSum += analogRead(Moisture_Pin);
+      delay(samplingInterval);
+    }
 
-  delay(100);
+    // Calculate averages
+    float tempAvg = tempSum / numMeasurements;
+    float weightAvg = weightSum / numMeasurements;
+    float moistAvg = (moistSum / numMeasurements) * gradient + offset;
+
+    // Print the results
+    Serial.print(tempAvg, 2);
+    Serial.print("\t\t| ");
+    Serial.print(weightAvg, 2);
+    Serial.print("\t| ");
+    Serial.print(moistAvg, 2);
+    Serial.println();
+  }
 }
