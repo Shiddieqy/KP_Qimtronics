@@ -3,6 +3,7 @@ void setup()
     Serial.begin( 115200 ); /* prepare for possible serial debug */
     lvgl_setup();
     view_setup();
+    BLE_setup();
     setup_loadcell();
       sensors.begin();
     
@@ -13,7 +14,7 @@ void loop()
     lv_timer_handler(); /* let the GUI do its work */
         lv_tick_inc(5);
     delay(5);
-
+    processSerialInput();
     update_data();
     
 

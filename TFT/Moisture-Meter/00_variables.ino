@@ -1,4 +1,4 @@
-#define SCALE 200/89529
+#define SCALE 277.2/110032.30
 #define VOLUME 1
 
 long int dis;
@@ -43,3 +43,5 @@ lv_obj_t * ui_Label4;
 lv_obj_t * ui_Label6;
 lv_obj_t * ui_Label13;
 lv_obj_t * ui____initial_actions0;
+
+bool deviceConnected = false;

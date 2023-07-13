@@ -17,12 +17,17 @@
 #include <TouchScreen.h>
 #include <OneWire.h>
 #include <DallasTemperature.h>
+#include <BLEDevice.h>
+#include <BLEServer.h>
+#include <BLEUtils.h>
+#include <BLE2902.h>
 // adjust pressure sensitivity - note works 'backwards'
 #define MINPRESSURE 200
 #define MAXPRESSURE 1000
 #include "max6675.h"
 #include "soc/rtc.h"
 #include "HX711.h"
+
 
 // Pin
 // Thermocouple
@@ -54,3 +59,17 @@ void my_disp_flush( lv_disp_drv_t *disp_drv, const lv_area_t *area, lv_color_t *
 void my_touchpad_read( lv_indev_drv_t * indev_drv, lv_indev_data_t * data );
 void tare12(lv_event_t * e);
 void Meassure21(lv_event_t * e);
+
+
+// Bluetooth Properties
+#define bleServerName "MoistureMeter"
+#define SERVICE_UUID "91bad492-b950-4226-aa2b-4ede9fa42f59"
+
+BLECharacteristic MoistureCharacteristics("f78ebbff-c8b7-4107-93de-889a6a06d408", BLECharacteristic::PROPERTY_NOTIFY);
+BLEDescriptor MoistureDescriptor(BLEUUID((uint16_t)0x2902));
+
+BLECharacteristic TemperatureCharacteristics("cba1d466-344c-4be3-ab3f-189f80dd7518", BLECharacteristic::PROPERTY_NOTIFY);
+BLEDescriptor TemperatureDescriptor(BLEUUID((uint16_t)0x2902));
+
+BLECharacteristic DensityCharacteristics("be773d42-214d-11ee-be56-0242ac120002", BLECharacteristic::PROPERTY_NOTIFY);
+BLEDescriptor DensityDescriptor(BLEUUID((uint16_t)0x2903));
