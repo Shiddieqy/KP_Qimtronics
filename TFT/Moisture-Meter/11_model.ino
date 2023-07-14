@@ -22,7 +22,7 @@ void sensor_sampling(){
     tempSum = 0;
     weightSum = 0;
     moistSum = 0;
-    taree=2;
+//    taree=2;
 //  
   }
   else if (taree == 1){
@@ -32,7 +32,7 @@ void sensor_sampling(){
     moisture = 0;
     density = 0;
     temperature = 0;
-    taree=2;
+//    taree=2;
   }
 }
 

@@ -252,7 +252,7 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_x(ui_Label6, 8);
     lv_obj_set_y(ui_Label6, -137);
     lv_obj_set_align(ui_Label6, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_Label6, "Coffe Moisture Meter");
+    lv_label_set_text(ui_Label6, "Coffee Moisture Meter");
     lv_obj_set_style_text_color(ui_Label6, lv_color_hex(0x94AEB4), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_Label6, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_align(ui_Label6, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);

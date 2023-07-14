@@ -12,11 +12,15 @@ void setup()
 void loop()
 {
     lv_timer_handler(); /* let the GUI do its work */
-        lv_tick_inc(5);
-    delay(5);
+        lv_tick_inc(1);
+    delay(1);
     processSerialInput();
-    update_data();
-    
+//    update_data();
+    if(millis() - timer_touch > TS_TOUCH){
+      touch_read();
+      timer_touch = millis();
+    }
+//    lv_event_send(obj, LV_EVENT_..., &custom_data)
 
 
 }

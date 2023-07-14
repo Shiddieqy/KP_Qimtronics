@@ -1,7 +1,7 @@
 void update_data(){
-      if (millis() - tim > 500){
+//      if (millis() - tim > 10){
         sensor_sampling();
-
+        if(taree == 0){
         sprintf(Moisture, "%.1f%%", moisture);
         sprintf(Temperature, "%.1f", temperature);
         sprintf(Density, "%.1f", density);
@@ -9,6 +9,8 @@ void update_data(){
         lv_textarea_set_text(ui_Moisture, Moisture);
         lv_textarea_set_text(ui_Temp, Temperature);
         lv_textarea_set_text(ui_Density, Density);
+        }
+        lv_label_set_text(ui_Label6, "Coffee Moisture Meter");
 
         static char MoistBLE[6];
         dtostrf(moisture, 6, 2, MoistBLE);
@@ -28,6 +30,6 @@ void update_data(){
         DensityCharacteristics.setValue(DenseBLE);
         DensityCharacteristics.notify();
         
-        tim = millis();
-    }
+//        tim = millis();
+//    }
 }
