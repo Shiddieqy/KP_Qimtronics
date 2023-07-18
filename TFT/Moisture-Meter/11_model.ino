@@ -12,6 +12,9 @@ void sensor_sampling(){
     scale.power_down();
     moisture =(moistSum / numMeasurements) * gradient + offset ;
     density = weightSum / numMeasurements* SCALE / VOLUME;
+    if (density < 1){
+      density = 0;
+    }
     temperature = tempSum / numMeasurements;
 
     Serial.print(moisture);
