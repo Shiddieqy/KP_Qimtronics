@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 //#define SCALE 277.2/110032.30
 #define SCALE 1
 #define VOLUME 1
+=======
+#define SCALE 277.2/110032.30
+#define VOLUME 0.4
+>>>>>>> 92508c9b31a6feef8b6a6345154ad2e083325c1f
 #define TS_TOUCH 10
 long int dis;
 long int tim = millis();
