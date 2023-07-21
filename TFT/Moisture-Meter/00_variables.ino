@@ -60,4 +60,5 @@ lv_obj_t * ui_Label4;
 lv_obj_t * ui_Label6;
 lv_obj_t * ui_Label13;
 lv_obj_t * ui____initial_actions0;
+
 bool deviceConnected = false;
