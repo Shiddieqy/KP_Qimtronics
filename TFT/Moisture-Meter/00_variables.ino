@@ -1,4 +1,5 @@
-#define SCALE 277.2/110032.30
+//#define SCALE 277.2/110032.30
+#define SCALE 1
 #define VOLUME 1
 #define TS_TOUCH 10
 long int dis;
@@ -16,7 +17,18 @@ float offset = 83.043;
 float tempSum = 0;
 float weightSum = 0;
 float moistSum = 0;
-const int oneWireBus = 18; 
+const int oneWireBus = 18;
+static NimBLECharacteristic *pMeasurementCharacteristic;
+uint8_t arr_data[6];
+
+float moisture_round;
+float temperature_round;
+float density_round;
+
+uint16_t moisture_data;
+uint16_t temperature_data;
+uint16_t density_data; 
+
 OneWire oneWire(oneWireBus);
 DallasTemperature sensors(&oneWire);
 HX711 scale;

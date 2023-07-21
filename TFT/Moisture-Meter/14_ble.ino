@@ -1,48 +1,42 @@
 
 //Setup callbacks onConnect and onDisconnect
 class MyServerCallbacks: public BLEServerCallbacks {
-  void onConnect(BLEServer* pServer) {
+  void onConnect(NimBLEServer* pServer) {
     deviceConnected = true;
   };
-  void onDisconnect(BLEServer* pServer) {
+  void onDisconnect(NimBLEServer* pServer) {
     deviceConnected = false;
   }
 };
 
-void BLE_setup(){
-    // Create the BLE Device
-  BLEDevice::init(bleServerName);
-
-  // Create the BLE Server
-  BLEServer *pServer = BLEDevice::createServer();
-  pServer->setCallbacks(new MyServerCallbacks());
-
-  // Create the BLE Service
-  BLEService *QohuaService = pServer->createService(SERVICE_UUID);
-
-  // Create BLE Characteristics and Create a BLE Descriptor
-
-  // Moisture
-  QohuaService->addCharacteristic(&MoistureCharacteristics);
-  MoistureDescriptor.setValue("Moisture");
-  MoistureCharacteristics.addDescriptor(new BLE2902());
-
-  // Temperature
-  QohuaService->addCharacteristic(&TemperatureCharacteristics);
-  TemperatureDescriptor.setValue("Temperature");
-  TemperatureCharacteristics.addDescriptor(new BLE2902());
-
-  // Density
-  QohuaService->addCharacteristic(&DensityCharacteristics);
-  DensityDescriptor.setValue("Density");
-  DensityCharacteristics.addDescriptor(new BLE2902());
+float rounded_02(float value_) {
+    float rounded_value = 0.0;
+    char array_float_value[7];
   
-  // Start the service
-  QohuaService->start();
+    sprintf(array_float_value, "%0.1f", value_);
+    sscanf(array_float_value, "%f",  &rounded_value);
+    return  rounded_value;
+}
 
-  // Start advertising
-  BLEAdvertising *pAdvertising = BLEDevice::getAdvertising();
+void NimBLE_setup(){
+    // Create the BLE Device
+  NimBLEDevice::init(bleServerName);
+  NimBLEDevice::setPower(ESP_PWR_LVL_P9); /** +9db */
+  NimBLEServer *pMeasurementServer = NimBLEDevice::createServer();
+  NimBLEService *pMeasurementService = pMeasurementServer->createService(SERVICE_UUID);
+  pMeasurementCharacteristic = pMeasurementService->createCharacteristic(
+        CHARACTERISTIC_UUID,
+        NIMBLE_PROPERTY::READ |
+        NIMBLE_PROPERTY::WRITE |
+        NIMBLE_PROPERTY::NOTIFY
+    );
+
+  pMeasurementService->start();
+  NimBLEAdvertising *pAdvertising = NimBLEDevice::getAdvertising();
   pAdvertising->addServiceUUID(SERVICE_UUID);
-  pServer->getAdvertising()->start();
-  Serial.println("Waiting a client connection to notify...");
+  pAdvertising->setScanResponse(true);
+  pAdvertising->setMinPreferred(0x06);
+  pAdvertising->setMinPreferred(0x12);
+  NimBLEDevice::startAdvertising();
+  Serial.println("Characteristic defined! Now you can read it on your phone!");
 }

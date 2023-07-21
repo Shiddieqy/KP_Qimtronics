@@ -17,10 +17,8 @@
 #include <TouchScreen.h>
 #include <OneWire.h>
 #include <DallasTemperature.h>
-#include <BLEDevice.h>
-#include <BLEServer.h>
-#include <BLEUtils.h>
-#include <BLE2902.h>
+#include <NimBLEDevice.h>
+
 // adjust pressure sensitivity - note works 'backwards'
 #define MINPRESSURE 200
 #define MAXPRESSURE 1000
@@ -63,13 +61,5 @@ void Meassure21(lv_event_t * e);
 
 // Bluetooth Properties
 #define bleServerName "MoistureMeter"
-#define SERVICE_UUID "91bad492-b950-4226-aa2b-4ede9fa42f59"
-
-BLECharacteristic MoistureCharacteristics("f78ebbff-c8b7-4107-93de-889a6a06d408", BLECharacteristic::PROPERTY_NOTIFY);
-BLEDescriptor MoistureDescriptor(BLEUUID((uint16_t)0x2902));
-
-BLECharacteristic TemperatureCharacteristics("cba1d466-344c-4be3-ab3f-189f80dd7518", BLECharacteristic::PROPERTY_NOTIFY);
-BLEDescriptor TemperatureDescriptor(BLEUUID((uint16_t)0x2902));
-
-BLECharacteristic DensityCharacteristics("be773d42-214d-11ee-be56-0242ac120002", BLECharacteristic::PROPERTY_NOTIFY);
-BLEDescriptor DensityDescriptor(BLEUUID((uint16_t)0x2903));
+#define SERVICE_UUID        "4fafc201-1fb5-459e-8fcc-c5c9c331914b"
+#define CHARACTERISTIC_UUID "beb5483e-36e1-4688-b7f5-ea07361b26a8"

@@ -3,7 +3,7 @@ void setup()
     Serial.begin( 115200 ); /* prepare for possible serial debug */
     lvgl_setup();
     view_setup();
-    BLE_setup();
+    NimBLE_setup();
     setup_loadcell();
       sensors.begin();
     

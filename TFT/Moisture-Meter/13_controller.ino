@@ -11,24 +11,24 @@ void update_data(){
         lv_textarea_set_text(ui_Density, Density);
         }
         lv_label_set_text(ui_Label6, "Coffee Moisture Meter");
+    
+        moisture_round = rounded_02(moisture);
+        temperature_round = rounded_02(temperature);
+        density_round = rounded_02(density);
 
-        static char MoistBLE[6];
-        dtostrf(moisture, 6, 2, MoistBLE);
-        //Set temperature Characteristic value and notify connected client
-        MoistureCharacteristics.setValue(MoistBLE);
-        MoistureCharacteristics.notify();
+        moisture_data = ((uint16_t)(moisture_round * 100));
+        temperature_data = ((uint16_t)(temperature_round * 100));
+        density_data = ((uint16_t)(density_round * 100));
 
-        static char TempBLE[6];
-        dtostrf(temperature, 6, 2, TempBLE);
-        //Set temperature Characteristic value and notify connected client
-        TemperatureCharacteristics.setValue(TempBLE);
-        TemperatureCharacteristics.notify();
-
-        static char DenseBLE[6];
-        dtostrf(density, 6, 2, DenseBLE);
-        //Set temperature Characteristic value and notify connected client
-        DensityCharacteristics.setValue(DenseBLE);
-        DensityCharacteristics.notify();
+        arr_data[5]   = (temperature_data ) & 0xFF;
+        arr_data[4]   = ((temperature_data >> 8) & 0xFF);
+        arr_data[3]   = (density_data ) & 0xFF;
+        arr_data[2]   = ((density_data >> 8) & 0xFF);
+        arr_data[1]   = (moisture_data ) & 0xFF;
+        arr_data[0]   = ((moisture_data >> 8) & 0xFF);
+        
+        pMeasurementCharacteristic->setValue(arr_data, sizeof(arr_data));
+        pMeasurementCharacteristic->notify();
         
 //        tim = millis();
 //    }
