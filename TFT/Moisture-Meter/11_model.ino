@@ -5,13 +5,14 @@ void sensor_sampling(){
       for (int i = 0; i < numMeasurements; i++) {
         sensors.requestTemperatures(); 
         tempSum += sensors.getTempCByIndex(0);
-        weightSum += scale.get_units(1);
+        weightSum += scale.get_units();
+        //weightSum += MovDensity.reading(scale.get_units());
         moistSum += analogRead(Moisture_Pin);
         delay(samplingInterval);
       }
     scale.power_down();
     moisture =(moistSum / numMeasurements) * gradient + offset ;
-    density = weightSum / numMeasurements* SCALE / VOLUME;
+    density = (weightSum / numMeasurements)* (SCALE / VOLUME);
     if (density < 1){
       density = 0;
     }

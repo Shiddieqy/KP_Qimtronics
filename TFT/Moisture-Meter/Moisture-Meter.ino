@@ -18,6 +18,7 @@
 #include <OneWire.h>
 #include <DallasTemperature.h>
 #include <NimBLEDevice.h>
+#include <movingAvg.h>
 
 // adjust pressure sensitivity - note works 'backwards'
 #define MINPRESSURE 200
@@ -58,6 +59,7 @@ void my_touchpad_read( lv_indev_drv_t * indev_drv, lv_indev_data_t * data );
 void tare12(lv_event_t * e);
 void Meassure21(lv_event_t * e);
 
+movingAvg MovDensity(10);
 
 // Bluetooth Properties
 #define bleServerName "MoistureMeter"

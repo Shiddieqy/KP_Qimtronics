@@ -6,6 +6,8 @@ void processSerialInput() {
       taree = 1 ; // Set taree value to 1
     } else if (receivedChar == 'm') { // If 't' is received
       taree = 0; // Set taree value to 0
+    } else if (receivedChar == 'c') { // If 't' is received
+      taree = 3; // Set taree value to 0
     }
   }
 }

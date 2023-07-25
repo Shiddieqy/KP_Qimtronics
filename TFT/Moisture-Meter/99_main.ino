@@ -11,6 +11,7 @@ void setup()
 }
 void loop()
 {
+    //densityAvg = MovDensity.reading(scale.get_units());
     lv_timer_handler(); /* let the GUI do its work */
         lv_tick_inc(1);
     delay(1);
