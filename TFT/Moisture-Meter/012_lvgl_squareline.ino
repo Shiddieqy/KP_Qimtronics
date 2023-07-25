@@ -1,7 +1,7 @@
 
 void ui_Screen1_screen_init(void)
 {
-    ui_Screen1 = lv_obj_create(NULL);
+ui_Screen1 = lv_obj_create(NULL);
     lv_obj_clear_flag(ui_Screen1, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
     lv_obj_set_style_bg_color(ui_Screen1, lv_color_hex(0x090329), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_bg_opa(ui_Screen1, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -141,7 +141,7 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_x(ui_Label2, -38);
     lv_obj_set_y(ui_Label2, 17);
     lv_obj_set_align(ui_Label2, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_Label2, "g/l");
+    lv_label_set_text(ui_Label2, "g/cm");
     lv_obj_set_style_text_color(ui_Label2, lv_color_hex(0x0073FF), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_Label2, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
 
@@ -163,7 +163,7 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_x(ui_Label1, -20);
     lv_obj_set_y(ui_Label1, 9);
     lv_obj_set_align(ui_Label1, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_Label1, " ");
+    lv_label_set_text(ui_Label1, "3");
     lv_obj_set_style_text_color(ui_Label1, lv_color_hex(0x0879FF), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_Label1, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_Label1, &lv_font_montserrat_8, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -207,20 +207,20 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_style_text_font(ui_Label3, &lv_font_montserrat_8, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_Button2 = lv_btn_create(ui_Screen1);
-    lv_obj_set_width(ui_Button2, 95);
+    lv_obj_set_width(ui_Button2, 85);
     lv_obj_set_height(ui_Button2, 50);
-    lv_obj_set_x(ui_Button2, -63);
-    lv_obj_set_y(ui_Button2, 93);
+    lv_obj_set_x(ui_Button2, 1);
+    lv_obj_set_y(ui_Button2, 105);
     lv_obj_set_align(ui_Button2, LV_ALIGN_CENTER);
     lv_obj_add_flag(ui_Button2, LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
     lv_obj_clear_flag(ui_Button2, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
     lv_obj_set_style_radius(ui_Button2, 100, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_Button1 = lv_btn_create(ui_Screen1);
-    lv_obj_set_width(ui_Button1, 95);
-    lv_obj_set_height(ui_Button1, 50);
-    lv_obj_set_x(ui_Button1, 68);
-    lv_obj_set_y(ui_Button1, 95);
+    lv_obj_set_width(ui_Button1, 63);
+    lv_obj_set_height(ui_Button1, 33);
+    lv_obj_set_x(ui_Button1, 74);
+    lv_obj_set_y(ui_Button1, 66);
     lv_obj_set_align(ui_Button1, LV_ALIGN_CENTER);
     lv_obj_add_flag(ui_Button1, LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
     lv_obj_clear_flag(ui_Button1, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
@@ -229,8 +229,8 @@ void ui_Screen1_screen_init(void)
     ui_Label5 = lv_label_create(ui_Screen1);
     lv_obj_set_width(ui_Label5, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_Label5, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_Label5, -64);
-    lv_obj_set_y(ui_Label5, 93);
+    lv_obj_set_x(ui_Label5, 1);
+    lv_obj_set_y(ui_Label5, 104);
     lv_obj_set_align(ui_Label5, LV_ALIGN_CENTER);
     lv_label_set_text(ui_Label5, "Measure");
     lv_obj_set_style_text_color(ui_Label5, lv_color_hex(0xC0D5EE), LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -239,12 +239,13 @@ void ui_Screen1_screen_init(void)
     ui_Label4 = lv_label_create(ui_Screen1);
     lv_obj_set_width(ui_Label4, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_Label4, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_Label4, 69);
-    lv_obj_set_y(ui_Label4, 94);
+    lv_obj_set_x(ui_Label4, 74);
+    lv_obj_set_y(ui_Label4, 66);
     lv_obj_set_align(ui_Label4, LV_ALIGN_CENTER);
     lv_label_set_text(ui_Label4, "Tare");
     lv_obj_set_style_text_color(ui_Label4, lv_color_hex(0xC0D5EE), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_Label4, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui_Label4, &lv_font_montserrat_12, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_Label6 = lv_label_create(ui_Screen1);
     lv_obj_set_width(ui_Label6, LV_SIZE_CONTENT);   /// 1
@@ -252,7 +253,7 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_x(ui_Label6, 8);
     lv_obj_set_y(ui_Label6, -137);
     lv_obj_set_align(ui_Label6, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_Label6, "Coffee Moisture Meter");
+    lv_label_set_text(ui_Label6, "Coffe Moisture Meter");
     lv_obj_set_style_text_color(ui_Label6, lv_color_hex(0x94AEB4), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_Label6, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_align(ui_Label6, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -270,9 +271,26 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_style_text_opa(ui_Label13, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_Label13, &lv_font_montserrat_12, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    lv_obj_add_event_cb(ui_Button2, ui_event_Button2, LV_EVENT_ALL, NULL);
-    lv_obj_add_event_cb(ui_Button1, ui_event_Button1, LV_EVENT_ALL, NULL);
+    ui_Button3 = lv_btn_create(ui_Screen1);
+    lv_obj_set_width(ui_Button3, 71);
+    lv_obj_set_height(ui_Button3, 33);
+    lv_obj_set_x(ui_Button3, -73);
+    lv_obj_set_y(ui_Button3, 66);
+    lv_obj_set_align(ui_Button3, LV_ALIGN_CENTER);
+    lv_obj_add_flag(ui_Button3, LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
+    lv_obj_clear_flag(ui_Button3, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_set_style_radius(ui_Button3, 100, LV_PART_MAIN | LV_STATE_DEFAULT);
 
+    ui_Label7 = lv_label_create(ui_Screen1);
+    lv_obj_set_width(ui_Label7, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_height(ui_Label7, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_x(ui_Label7, -73);
+    lv_obj_set_y(ui_Label7, 66);
+    lv_obj_set_align(ui_Label7, LV_ALIGN_CENTER);
+    lv_label_set_text(ui_Label7, "Calibrate");
+    lv_obj_set_style_text_color(ui_Label7, lv_color_hex(0xC0D5EE), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui_Label7, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui_Label7, &lv_font_montserrat_12, LV_PART_MAIN | LV_STATE_DEFAULT);
 }
 void ui_init(void)
 {

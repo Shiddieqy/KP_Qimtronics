@@ -18,16 +18,20 @@ void touch_read()
 
     if(touched)
     {
-      if (touchX < 120){
+      if (touchX < 160 and touchX > 80){
         taree = 0;
         lv_label_set_text(ui_Label6, "Measuring ...");
       }
-      if (touchX > 120){
+      if (touchX > 160){
         taree = 1;
          lv_label_set_text(ui_Label6, "Taring ...");
       }
+      else if (touchX < 80){
+        taree = 2;
+        lv_label_set_text(ui_Label6, "Calibrating ...");
+      }
       Serial.print( "Data x " );
-        Serial.println( touchX );
+       Serial.println( touchX );
       lv_textarea_set_text(ui_Moisture, "##");
       lv_textarea_set_text(ui_Density, "##");
       lv_textarea_set_text(ui_Temp, "##");
@@ -60,19 +64,27 @@ void Meassure21(lv_event_t * e)
   taree = 0;
 }
 
-void ui_event_Button1(lv_event_t * e)
-{
-    lv_event_code_t event_code = lv_event_get_code(e);
-    lv_obj_t * target = lv_event_get_target(e);
-//    if(event_code == LV_EVENT_CLICKED) {
-        tare12(e);
-//    }
-}
 void ui_event_Button2(lv_event_t * e)
 {
     lv_event_code_t event_code = lv_event_get_code(e);
     lv_obj_t * target = lv_event_get_target(e);
-//    if(event_code == LV_EVENT_CLICKED) {
+    if(event_code == LV_EVENT_CLICKED) {
         Meassure21(e);
-//    }
+    }
+}
+void ui_event_Button1(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+    lv_obj_t * target = lv_event_get_target(e);
+    if(event_code == LV_EVENT_CLICKED) {
+        tare12(e);
+    }
+}
+void ui_event_Button3(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+    lv_obj_t * target = lv_event_get_target(e);
+    if(event_code == LV_EVENT_CLICKED) {
+        tare12(e);
+    }
 }
