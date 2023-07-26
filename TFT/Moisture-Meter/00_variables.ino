@@ -1,4 +1,4 @@
-float SCALE= 277.2/110032.30;
+float SCALE= 0.002505538;
 #define VOLUME 0.4
 #define TS_TOUCH 10
 #define TS_MA 20
