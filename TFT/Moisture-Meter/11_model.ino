@@ -7,7 +7,7 @@ void sensor_sampling(){
       for (int i = 0; i < numMeasurements; i++) {
         sensors.requestTemperatures(); 
         tempSum += sensors.getTempCByIndex(0);
-        weightSum += scale.get_units(1);
+        weightSum += MovDensity.reading(scale.get_units());
         moistSum += analogRead(Moisture_Pin);
         delay(samplingInterval);
       }
@@ -41,8 +41,8 @@ void sensor_sampling(){
    else if (taree == 2) { // If 'c' is received
       weightSum = 0;
       for (int i = 0; i < 10; i++) {
-        weightSum += scale.get_units();
-        //weightSum += MovDensity.reading(scale.get_units());
+        //weightSum += scale.get_units();
+        weightSum += MovDensity.reading(scale.get_units());
       }
       float weightTemp = weightSum/10;
       SCALE = 200/weightTemp;
