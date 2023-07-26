@@ -1,6 +1,8 @@
 float SCALE= 277.2/110032.30;
 #define VOLUME 0.4
 #define TS_TOUCH 10
+#define TS_MA 20
+int timer_ma = millis();
 long int dis;
 long int tim = millis();
 float moisture = 10.23;
@@ -16,6 +18,15 @@ float offset = 83.043;
 float tempSum = 0;
 float weightSum = 0;
 float moistSum = 0;
+int densityAvg = 0;
+float moisture_round;
+float temperature_round;
+float density_round;
+static NimBLECharacteristic *pMeasurementCharacteristic;
+uint8_t arr_data[6];
+uint16_t moisture_data;
+uint16_t temperature_data;
+uint16_t density_data; 
 const int oneWireBus = 18; 
 OneWire oneWire(oneWireBus);
 DallasTemperature sensors(&oneWire);
