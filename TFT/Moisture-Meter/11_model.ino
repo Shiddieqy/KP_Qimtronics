@@ -11,7 +11,7 @@ void sensor_sampling(){
         moistSum += analogRead(Moisture_Pin);
         delay(samplingInterval);
       }
-//    scale.power_down();
+    scale.power_down();
     moisture =(moistSum / numMeasurements) * gradient + offset ;
     density = weightSum / numMeasurements* SCALE / VOLUME;
     if (density < 1){
@@ -31,6 +31,7 @@ void sensor_sampling(){
   else if (taree == 1){
     scale.power_up();
     scale.tare();
+    scale.power_down();
 //    scale.power_down();
     moisture = 0;
     density = 0;
@@ -45,10 +46,6 @@ void sensor_sampling(){
       }
       float weightTemp = weightSum/10;
       SCALE = 200/weightTemp;
-//      lv_label_set_text(ui_Label6, "Measuring ..."); 
-//      taree =0;
-//      lv_timer_handler();
-//      sensor_sampling();
     }
 }
 

@@ -29,7 +29,7 @@ void update_data(){
         
         pMeasurementCharacteristic->setValue(arr_data, sizeof(arr_data));
         pMeasurementCharacteristic->notify();
-        
+        scale.power_up();
 //        tim = millis();
 //    }
 }
