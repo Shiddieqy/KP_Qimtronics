@@ -20,11 +20,11 @@ void loop()
     if(millis() - timer_touch > TS_TOUCH){
       touch_read();
       timer_touch = millis();
-      Serial.println("masih jalan");
+      //Serial.println("masih jalan");
     }
     if(millis() - timer_ma > TS_MA){
 //      scale.power_up();
-      densityAvg = MovDensity.reading(scale.get_units());
+      //densityAvg = MovDensity.reading(scale.get_units());
       Serial.println(MovDensity.reading(scale.get_units()));
 //      scale.power_down();
       timer_ma = millis();

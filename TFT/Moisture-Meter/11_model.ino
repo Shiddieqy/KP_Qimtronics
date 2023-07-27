@@ -4,14 +4,18 @@ void sensor_sampling(){
     weightSum = 0;
     moistSum = 0;
    scale.power_up();
-      for (int i = 0; i < numMeasurements; i++) {
-        sensors.requestTemperatures(); 
-        tempSum += sensors.getTempCByIndex(0);
-        weightSum += MovDensity.reading(scale.get_units());
-        moistSum += analogRead(Moisture_Pin);
+      for (int i = 0; i < (5*numMeasurements); i++) {
+        if (i>(4*numMeasurements-1)){
+          sensors.requestTemperatures(); 
+          tempSum += sensors.getTempCByIndex(0);
+          weightSum += MovDensity.reading(scale.get_units());
+          moistSum += analogRead(Moisture_Pin);
+        } else {
+          MovDensity.reading(scale.get_units());
+        }
         delay(samplingInterval);
       }
-    scale.power_down();
+//    scale.power_down();
     moisture =(moistSum / numMeasurements) * gradient + offset ;
     density = weightSum / numMeasurements* SCALE / VOLUME;
     if (density < 1){
@@ -31,7 +35,6 @@ void sensor_sampling(){
   else if (taree == 1){
     scale.power_up();
     scale.tare();
-    scale.power_down();
 //    scale.power_down();
     moisture = 0;
     density = 0;
