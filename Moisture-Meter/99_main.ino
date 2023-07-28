@@ -30,7 +30,4 @@ void loop()
       Serial.println(MovDensity.reading(scale.get_units()));
       timer_ma = millis();
     }
-
-
-
 }

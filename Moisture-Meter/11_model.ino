@@ -30,7 +30,7 @@ void sensor_sampling(){
     Serial.print(density);
     Serial.print("   ");
     Serial.println(temperature);
-
+    }
 
   }
 
@@ -56,6 +56,7 @@ void sensor_sampling(){
       SCALE = 200/weightTemp;
     }
 }
+
 
 void setup_loadcell(){
   rtc_clk_cpu_freq_set(RTC_CPU_FREQ_80M);

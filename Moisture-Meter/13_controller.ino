@@ -1,6 +1,9 @@
+// Main processing function
 void update_data(){
-//      if (millis() - tim > 10){
+        // obtain sensor values
         sensor_sampling();
+
+        // only show values when state is 0 (measuring)
         if(sys_State == 0){
         sprintf(Moisture, "%.1f%%", moisture);
         sprintf(Temperature, "%.1f", temperature);
@@ -30,6 +33,4 @@ void update_data(){
         pMeasurementCharacteristic->setValue(arr_data, sizeof(arr_data));
         pMeasurementCharacteristic->notify();
         scale.power_up();
-//        tim = millis();
-//    }
 }
