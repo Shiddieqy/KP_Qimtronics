@@ -1,21 +1,23 @@
+
+// Measurement function
 void sensor_sampling(){
-  if (taree == 0){
-      tempSum = 0;
+  // measure if the state is 0
+  if (sys_State == 0){
+    tempSum = 0;
     weightSum = 0;
     moistSum = 0;
-   scale.power_up();
-      for (int i = 0; i < (5*numMeasurements); i++) {
-        if (i>(4*numMeasurements-1)){
-          sensors.requestTemperatures(); 
-          tempSum += sensors.getTempCByIndex(0);
-          weightSum += MovDensity.reading(scale.get_units());
-          moistSum += analogRead(Moisture_Pin);
-        } else {
-          MovDensity.reading(scale.get_units());
-        }
-        delay(samplingInterval);
+    scale.power_up();
+    //Averaging <numMeasurement> times
+    for (int i = 0; i < (5*numMeasurements); i++) {
+      if (i>(4*numMeasurements-1)){
+        sensors.requestTemperatures(); 
+        tempSum += sensors.getTempCByIndex(0);
+        weightSum += MovDensity.reading(scale.get_units());
+        moistSum += analogRead(Moisture_Pin);
+      } else {
+        MovDensity.reading(scale.get_units());
       }
-//    scale.power_down();
+
     moisture =(moistSum / numMeasurements) * gradient + offset ;
     density = weightSum / numMeasurements* SCALE / VOLUME;
     if (density < 1){
@@ -29,23 +31,26 @@ void sensor_sampling(){
     Serial.print("   ");
     Serial.println(temperature);
 
-//    taree=2;
-//  
+
   }
-  else if (taree == 1){
+
+  // Taring if the state is 1
+  else if (sys_State == 1){
     scale.power_up();
     scale.tare();
-//    scale.power_down();
+
     moisture = 0;
     density = 0;
     temperature = 0;
-//    taree=2;
+
   }
-   else if (taree == 2) { // If 'c' is received
+
+  // calibr
+  else if (sys_State == 2) { 
       weightSum = 0;
       for (int i = 0; i < 10; i++) {
-        //weightSum += scale.get_units();
-        weightSum += MovDensity.reading(scale.get_units());
+        weightSum += scale.get_units();
+        //weightSum += MovDensity.reading(scale.get_units());
       }
       float weightTemp = weightSum/10;
       SCALE = 200/weightTemp;
@@ -60,5 +65,5 @@ void setup_loadcell(){
   scale.tare();
   Serial.println();
   Serial.println("Tare done, measurement start!");
-  scale.power_down();
+  // scale.power_down();
 }

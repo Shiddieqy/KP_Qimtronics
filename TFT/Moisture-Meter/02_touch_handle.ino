@@ -19,15 +19,15 @@ void touch_read()
     if(touched)
     {
       if (touchX < 160 and touchX > 80){
-        taree = 0;
+        sys_State = 0;
         lv_label_set_text(ui_Label6, "Measuring ...");
       }
       if (touchX > 160){
-        taree = 1;
+        sys_State = 1;
          lv_label_set_text(ui_Label6, "Taring ...");
       }
       else if (touchX < 80){
-        taree = 2;
+        sys_State = 2;
         lv_label_set_text(ui_Label6, "Calibrating ...");
       }
       Serial.print( "Data x " );
@@ -35,56 +35,9 @@ void touch_read()
       lv_textarea_set_text(ui_Moisture, "##");
       lv_textarea_set_text(ui_Density, "##");
       lv_textarea_set_text(ui_Temp, "##");
-          lv_timer_handler(); /* let the GUI do its work */
-//        lv_tick_inc(1);
-//    delay(1);
+      lv_timer_handler(); /* let the GUI do its work */
+
 
       update_data();
-    }
-//        data->state = LV_INDEV_STATE_PR;
-
-//        /*Set the coordinates*/
-//        data->point.x = touchX;
-//        data->point.y = touchY;
-
-//        Serial.print( "Data x " );
-//        Serial.println( touchX );
-//
-//        Serial.print( "Data y " );
-//        Serial.println( touchY );
-//    }
-}
-void tare12(lv_event_t * e)
-{
-  taree = 1;
-}
-void Meassure21(lv_event_t * e)
-{
-  // Your code here
-  taree = 0;
-}
-
-void ui_event_Button2(lv_event_t * e)
-{
-    lv_event_code_t event_code = lv_event_get_code(e);
-    lv_obj_t * target = lv_event_get_target(e);
-    if(event_code == LV_EVENT_CLICKED) {
-        Meassure21(e);
-    }
-}
-void ui_event_Button1(lv_event_t * e)
-{
-    lv_event_code_t event_code = lv_event_get_code(e);
-    lv_obj_t * target = lv_event_get_target(e);
-    if(event_code == LV_EVENT_CLICKED) {
-        tare12(e);
-    }
-}
-void ui_event_Button3(lv_event_t * e)
-{
-    lv_event_code_t event_code = lv_event_get_code(e);
-    lv_obj_t * target = lv_event_get_target(e);
-    if(event_code == LV_EVENT_CLICKED) {
-        tare12(e);
     }
 }

@@ -1,7 +1,7 @@
 void update_data(){
 //      if (millis() - tim > 10){
         sensor_sampling();
-        if(taree == 0){
+        if(sys_State == 0){
         sprintf(Moisture, "%.1f%%", moisture);
         sprintf(Temperature, "%.1f", temperature);
         sprintf(Density, "%.1f", density);

@@ -3,11 +3,11 @@ void processSerialInput() {
     char receivedChar = Serial.read(); // Read a character from the serial monitor
     
     if (receivedChar == 't') { // If 'm' is received
-      taree = 1 ; // Set taree value to 1
+      sys_State = 1 ; // Set sys_State value to 1
     } else if (receivedChar == 'm') { // If 't' is received
-      taree = 0; // Set taree value to 0
+      sys_State = 0; // Set sys_State value to 0
     } else if (receivedChar == 'c') { // If 't' is received
-      taree = 2; // Set taree value to 0
+      sys_State = 2; // Set sys_State value to 0
     }
   }
 }

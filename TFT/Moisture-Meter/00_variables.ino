@@ -11,7 +11,7 @@ float density = 130.23;
 char Moisture[20];
 char Temperature[20];
 char Density[20];
-int taree = 1;
+int sys_State = 1;
 float ScaleConst = 1;
 float gradient = -0.0254;
 float offset = 83.043;
