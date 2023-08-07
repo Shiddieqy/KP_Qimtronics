@@ -59,9 +59,9 @@ void my_touchpad_read( lv_indev_drv_t * indev_drv, lv_indev_data_t * data );
 void tare12(lv_event_t * e);
 void Meassure21(lv_event_t * e);
 
-movingAvg MovDensity(10);
+movingAvg MovDensity(20);
 
 // Bluetooth Properties
 #define bleServerName "MoistureMeter"
-#define SERVICE_UUID        "4fafc201-1fb5-459e-8fcc-c5c9c331914b"
-#define CHARACTERISTIC_UUID "beb5483e-36e1-4688-b7f5-ea07361b26a8"
+#define SERVICE_UUID        "6e400001-b5a3-f393-e0a9-e50e24dcca9e"
+#define CHARACTERISTIC_UUID "6e400003-b5a3-f393-e0a9-e50e24dcca9e"

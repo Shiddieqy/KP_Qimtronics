@@ -6,6 +6,7 @@ void sensor_sampling(){
     tempSum = 0;
     weightSum = 0;
     moistSum = 0;
+<<<<<<< Updated upstream:Moisture-Meter/11_model.ino
     scale.power_up();
     //Averaging <numMeasurement> times
     for (int i = 0; i < (5*numMeasurements); i++) {
@@ -16,18 +17,31 @@ void sensor_sampling(){
         moistSum += analogRead(Moisture_Pin);
       } else {
         MovDensity.reading(scale.get_units());
+=======
+   scale.power_up();
+      for (int i = 0; i < (numMeasurements); i++) {
+          sensors.requestTemperatures(); 
+          tempSum += sensors.getTempCByIndex(0);
+          weightSum += MovDensity.reading(scale.get_units());
+          moistSum += analogRead(Moisture_Pin);
+        //delay(samplingInterval);
+>>>>>>> Stashed changes:TFT/Moisture-Meter/11_model.ino
       }
 
     moisture =(moistSum / numMeasurements) * gradient + offset ;
     density = weightSum / numMeasurements* SCALE / VOLUME;
+    weight = weightSum / numMeasurements* SCALE
     if (density < 1){
       density = 0;
+      weight = 0;
     }
     temperature = tempSum / numMeasurements;
 
     Serial.print(moisture);
     Serial.print("   ");
     Serial.print(density);
+    Serial.print("   ");
+    Serial.print(weight);
     Serial.print("   ");
     Serial.println(temperature);
     }

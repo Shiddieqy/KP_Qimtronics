@@ -1,4 +1,4 @@
-float SCALE= 0.002505538;
+float SCALE = 0.002505538;
 #define VOLUME 0.4
 #define TS_TOUCH 10
 #define TS_MA 20
@@ -8,10 +8,16 @@ long int tim = millis();
 float moisture = 10.23;
 float temperature = 24.23;
 float density = 130.23;
+float weight = 20;
 char Moisture[20];
 char Temperature[20];
 char Density[20];
+<<<<<<< Updated upstream:Moisture-Meter/00_variables.ino
 int sys_State = 1;
+=======
+char Weight[20];
+int taree = 1;
+>>>>>>> Stashed changes:TFT/Moisture-Meter/00_variables.ino
 float ScaleConst = 1;
 float gradient = -0.0254;
 float offset = 83.043;
@@ -22,11 +28,13 @@ int densityAvg = 0;
 float moisture_round;
 float temperature_round;
 float density_round;
+float weight_round
 static NimBLECharacteristic *pMeasurementCharacteristic;
-uint8_t arr_data[6];
+uint8_t arr_data[8];
 uint16_t moisture_data;
 uint16_t temperature_data;
 uint16_t density_data; 
+uint16_t weight_data; 
 const int oneWireBus = 18; 
 OneWire oneWire(oneWireBus);
 DallasTemperature sensors(&oneWire);
