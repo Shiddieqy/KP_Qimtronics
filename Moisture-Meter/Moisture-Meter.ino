@@ -29,10 +29,6 @@
 
 
 // Pin
-// Thermocouple
-#define thermoDO 19
-#define thermoCS 23
-#define thermoCLK 5
 // Load Cell
 #define LOADCELL_DOUT_PIN 35
 #define LOADCELL_SCK_PIN 13

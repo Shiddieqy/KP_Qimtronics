@@ -26,14 +26,14 @@ void update_data(){
         density_data = ((uint16_t)(density_round * 100));
         weight_data = ((uint16_t)(weight_round * 100));
 
-        arr_data[0]   = (temperature_data ) & 0xFF;
-        arr_data[1]   = ((temperature_data >> 8) & 0xFF);
-        arr_data[2]   = (density_data ) & 0xFF;
-        arr_data[3]   = ((density_data >> 8) & 0xFF);
-        arr_data[4]   = (moisture_data ) & 0xFF;
-        arr_data[5]   = ((moisture_data >> 8) & 0xFF);
-        arr_data[6]   = (moisture_data ) & 0xFF;
-        arr_data[7]   = ((moisture_data >> 8) & 0xFF);
+        arr_data[0]   = ((temperature_data >> 8) & 0xFF);
+        arr_data[1]   = (temperature_data ) & 0xFF;
+        arr_data[2]   = ((weight_data >> 8) & 0xFF);
+        arr_data[3]   = (weight_data ) & 0xFF;
+        arr_data[4]   = ((moisture_data >> 8) & 0xFF);
+        arr_data[5]   = (moisture_data ) & 0xFF;
+        arr_data[6]   = ((density_data >> 8) & 0xFF);
+        arr_data[7]   = (density_data ) & 0xFF;
         
         pMeasurementCharacteristic->setValue(arr_data, sizeof(arr_data));
         pMeasurementCharacteristic->notify();
