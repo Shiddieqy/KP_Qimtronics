@@ -28,9 +28,9 @@ void loop()
     if(millis() - timer_ma > TS_MA){
 //      scale.power_up();
       densityAvg = MovDensity.reading(scale.get_units());
-      Serial.print(densityAvg*SCALE);
+      Serial.print(densityAvg);
       Serial.print("\t");
-      Serial.println(scale.get_units()*SCALE);
+      Serial.println(scale.get_units());
 //      scale.power_down();
       timer_ma = millis();
     }

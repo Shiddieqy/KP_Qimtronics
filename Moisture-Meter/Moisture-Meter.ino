@@ -34,7 +34,6 @@
 #define LOADCELL_SCK_PIN 13
 // Moisture
 #define Moisture_Pin 36
-MAX6675 thermocouple(thermoCLK, thermoCS, thermoDO);
 const int numMeasurements = 10;  // Number of measurements for averaging
 const int samplingInterval = 10; 
 const int XP = 27, XM = 15, YP = 4, YM = 14; // default ESP32 Uno touchscreen pins
