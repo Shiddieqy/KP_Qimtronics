@@ -12,12 +12,8 @@ float weight = 20;
 char Moisture[20];
 char Temperature[20];
 char Density[20];
-<<<<<<< Updated upstream:Moisture-Meter/00_variables.ino
 int sys_State = 1;
-=======
 char Weight[20];
-int taree = 1;
->>>>>>> Stashed changes:TFT/Moisture-Meter/00_variables.ino
 float ScaleConst = 1;
 float gradient = -0.0254;
 float offset = 83.043;
@@ -28,7 +24,7 @@ int densityAvg = 0;
 float moisture_round;
 float temperature_round;
 float density_round;
-float weight_round
+float weight_round;
 static NimBLECharacteristic *pMeasurementCharacteristic;
 uint8_t arr_data[8];
 uint16_t moisture_data;

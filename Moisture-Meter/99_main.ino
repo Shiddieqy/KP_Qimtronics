@@ -26,17 +26,12 @@ void loop()
 
     // Moving average sampling
     if(millis() - timer_ma > TS_MA){
-<<<<<<< Updated upstream:Moisture-Meter/99_main.ino
-      //densityAvg = MovDensity.reading(scale.get_units());
-      Serial.println(MovDensity.reading(scale.get_units()));
-=======
 //      scale.power_up();
       densityAvg = MovDensity.reading(scale.get_units());
-      Serial.print(densityAvg*SCALE);
+      Serial.print(densityAvg);
       Serial.print("\t");
-      Serial.println(scale.get_units()*SCALE);
+      Serial.println(scale.get_units());
 //      scale.power_down();
->>>>>>> Stashed changes:TFT/Moisture-Meter/99_main.ino
       timer_ma = millis();
     }
 }
